@@ -1,0 +1,35 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/card.css' %}">
+</head>
+<body>
+    <div class="person-card">
+        <div class="card-header">
+            <h2>{{ person.name }}</h2>
+            <button class="expand-btn">+</button>
+        </div>
+
+        <hr>
+
+        <div class="card-image">
+            <img src="{% static person.image %}" alt="{{ person.name }}">
+        </div>
+
+        <div class="card-years">
+            <p>Годы правления</p>
+            <p><strong>{{ person.years }}</strong></p>
+        </div>
+
+        <div class="card-footer">
+            <a href="{{ person.link }}" class="details-btn">Подробнее →</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Чтиво — {{ person.name }}{% endblock %}
+
+{% block content %}
+<div class="person-detail">
+    <h1>{{ person.name }}</h1>
+
+    <div class="detail-content">
+        <div class="detail-image">
+            <img src="http://localhost:9000/images/historyPerson{{ person.id }}.png" alt="{{ person.name }}">
+        </div>
+
+        <div class="detail-years">
+            <h3>Годы правления</h3>
+            <p><strong>{{ person.years }}</strong></p>
+        </div>
+
+    </div>
+
+    {% if person.desc %}
+    <div class="detail-desc">
+        <h3>Историческая сводка:</h3>
+        <p>{{ person.desc }}</p>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

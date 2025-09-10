@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Чтиво{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/historyPerson.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/historyPersonDetalied.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/orderForPredictingYear.css' %}">
+</head>
+<body>
+    <header>
+         <a href="{% url 'main_page' %}">
+            <img src="http://localhost:9000/images/logo_chtivo.png" alt="img" alt="Чтиво">
+         </a>
+    </header>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

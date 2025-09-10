@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Выбор услуг{% endblock %}
+
+{% block content %}
+<div class="head-container">
+<form action="/" method="GET">
+    <div class="input-container">
+        <input type="text" placeholder="Поиск..." name="q" value = "{{ query }}">
+        <button type="submit" class="search-button">
+            <img src="http://localhost:9000/images/lupa.png" alt="Search Icon" class="search-icon">
+        </button>
+    </div>
+</form>
+    <a href="/orderForPredictingYear/1/" class="cart-button">
+        <img src="http://localhost:9000/images/cartOfPersons.png" alt="cart">
+        <span class="cart-counter">{{ cart.historyPersons_count }}</span>
+    </a>
+</div>
+<div class="cards-container">
+    {% for person in persons %}
+        <div class="person-card">
+            <div class="card-header">
+                <div class="person-name">{{ person.name }}</div>
+                <button class="expand-btn">+</button>
+            </div>
+
+            <hr>
+
+            <div class="card-image">
+                <img src="http://localhost:9000/images/historyPerson{{ person.id }}.png" alt="{{ person.name }}">
+            </div>
+
+            <div class="card-years">
+                <p>Годы правления</p>
+                <p margin-left="10px"><strong>{{ person.years }}</strong></p>
+            </div>
+
+            <div class="card-footer">
+                <a href="{% url 'historyPersonDetailed' person.id %}" class="details-btn">Подробнее →</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>Ничего не найдено по запросу "{{ query }}"</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

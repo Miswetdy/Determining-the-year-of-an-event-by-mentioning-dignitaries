@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Заявка на вычисление года события{% endblock %}
+
+{% block content %}
+<div class="cart-container">
+    <h1 class="page-title">Оформление заявки</h1>
+
+    {% for person in persons %}
+    <div class="cart-card">
+        <div class="cart-card-image">
+            <img src="http://localhost:9000/images/historyPerson{{ person.id }}.png" alt="{{ person.name }}">
+        </div>
+        <div class="cart-card-content">
+            <h2>{{ person.name }}</h2>
+            <div class="info-row">
+                <p class="years">
+                    Годы правления <br><strong>{{ person.years }}</strong>
+                </p>
+                <label class="checkbox-label">
+                    Участвует в событии
+                    <input class="checkbox" type="checkbox" name="include_{{ person.id }}" checked>
+                </label>
+            </div>
+
+        </div>
+        <div class="card-footer">
+                <a href="/historyPersonDetailed/{{ person.id }}/" class="details-btn">Подробнее →</a>
+            </div>
+        <button class="remove-btn">✕</button>
+    </div>
+    {% endfor %}
+    <br>
+    <h2 class="section-title">Текст хроники события</h2>
+    <textarea placeholder="Ввести..."></textarea>
+    <button class="save-btn">Сохранить</button>
+    <div class="order-buttons" display="inline">
+        <button class="make-order-btn">Оформить заявку</button>
+        <button class="remove-order-btn">Удалить заявку</button>
+    </div>
+
+    <div class="event-year">
+        <h2>Год события</h2>
+        <p class="year-box">1252–1263</p>
+    </div>
+</div>
+{% endblock %}
