@@ -6,6 +6,10 @@
 <div class="cart-container">
     <h1 class="page-title">Оформление заявки</h1>
 
+    <h2 class="section-title">Текст хроники события</h2>
+    <textarea placeholder="Ввести..."></textarea>
+    <button class="save-btn">Сохранить</button>
+
     {% for person in persons %}
     <div class="cart-card">
         <div class="cart-card-image">
@@ -15,12 +19,15 @@
             <h2>{{ person.name }}</h2>
             <div class="info-row">
                 <p class="years">
-                    Годы правления <br><strong>{{ person.years }}</strong>
+                    Годы правления <br><strong>{{ person.year_from }} — {{ person.year_to }}</strong>
                 </p>
-                <label class="checkbox-label">
-                    Участвует в событии
-                    <input class="checkbox" type="checkbox" name="include_{{ person.id }}" checked>
-                </label>
+                <div class="confidence-input-container">
+                    <label class="confidence-label">
+                    Коэффициент доверия
+                        <input class="confidence-input" type="number" name="confidence_{{ person.id }}"
+                            min="0" max="1" step="0.01" value="1.0" required>
+                    </label>
+                </div>
             </div>
 
         </div>
@@ -30,10 +37,7 @@
         <button class="remove-btn">✕</button>
     </div>
     {% endfor %}
-    <br>
-    <h2 class="section-title">Текст хроники события</h2>
-    <textarea placeholder="Ввести..."></textarea>
-    <button class="save-btn">Сохранить</button>
+
     <div class="order-buttons" display="inline">
         <button class="make-order-btn">Оформить заявку</button>
         <button class="remove-order-btn">Удалить заявку</button>
@@ -41,7 +45,7 @@
 
     <div class="event-year">
         <h2>Год события</h2>
-        <p class="year-box">1252–1263</p>
+        <p class="year-box">{{ cart.result_year_from }} — {{ cart.result_year_to }}</p>
     </div>
 </div>
 {% endblock %}

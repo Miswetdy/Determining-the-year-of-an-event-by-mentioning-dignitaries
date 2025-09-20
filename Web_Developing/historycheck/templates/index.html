@@ -19,27 +19,7 @@
 </div>
 <div class="cards-container">
     {% for person in persons %}
-        <div class="person-card">
-            <div class="card-header">
-                <div class="person-name">{{ person.name }}</div>
-                <button class="expand-btn">+</button>
-            </div>
-
-            <hr>
-
-            <div class="card-image">
-                <img src="http://localhost:9000/images/historyPerson{{ person.id }}.png" alt="{{ person.name }}">
-            </div>
-
-            <div class="card-years">
-                <p>Годы правления</p>
-                <p margin-left="10px"><strong>{{ person.years }}</strong></p>
-            </div>
-
-            <div class="card-footer">
-                <a href="{% url 'historyPersonDetailed' person.id %}" class="details-btn">Подробнее →</a>
-            </div>
-        </div>
+        {% include 'historyPerson.html' with person=person %}
     {% empty %}
         <p>Ничего не найдено по запросу "{{ query }}"</p>
     {% endfor %}
